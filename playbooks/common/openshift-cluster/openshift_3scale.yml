@@ -1,0 +1,5 @@
+---
+- name: OpenShift 3Scale API Management
+  hosts: oo_first_master
+  roles:
+  - openshift_3scale

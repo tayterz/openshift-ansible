@@ -29,6 +29,8 @@
   - role: openshift_hosted
   - role: openshift_metrics
     when: openshift_hosted_metrics_deploy | default(false) | bool
+  - role: openshift_3scale
+    when: openshift_hosted_3scale_deploy | default(false) | bool
   - role: openshift_logging
     when: openshift_hosted_logging_deploy | default(false) | bool
     openshift_hosted_logging_hostname: "{{ logging_hostname }}"
@@ -68,3 +70,5 @@
         name: openshift_metrics
         tasks_from: update_master_config
     when: openshift_hosted_metrics_deploy | default(false) | bool
+
+  - :
