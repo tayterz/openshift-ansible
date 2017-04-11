@@ -22,7 +22,7 @@
 - name: Processing template
   shell: >
     {{ openshift.common.client_binary }} --config={{ kubeconfig }}
-    process template system
+    process system
     -n {{ openshift_3scale_project }} |
     oc create -f - -n {{ openshift_3scale_project }}
 
