@@ -1,0 +1,6 @@
+---
+- name: Generate 3scale Template
+  template: src=amp.j2 dest={{mktemp.stdout}}/templates/amp.yaml
+  vars:
+    wildcard_domain: "{{openshift_3scale_wildcard_domain}}"
+  changed_when: no
