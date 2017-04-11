@@ -14,10 +14,17 @@
   command: >
     {{ openshift.common.client_binary }} --config={{ kubeconfig }}
     apply -f {{ file_name }}
-    -n {{ openshift_metrics_project }}
+    -n {{ openshift_3scale_project }}
   register: generation_apply
   failed_when: "'error' in generation_apply.stderr"
   changed_when: no
+
+- name: Processing template
+  shell: >
+    {{ openshift.common.client_binary }} --config={{ kubeconfig }}
+    process template system
+    -n {{ openshift_3scale_project }} |
+    oc create -f - -n {{ openshift_3scale_project }}
 
 - name: Determine change status of {{file_content.kind}} {{file_content.metadata.name}}
   command: >
