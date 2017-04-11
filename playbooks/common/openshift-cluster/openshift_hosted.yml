@@ -74,5 +74,4 @@
   - block:
     - include_role:
         name: openshift_3scale
-        tasks_from: update_master_config
-    when: openshift_hosted_3scale_deploy | default(false) | bool
+        when: openshift_hosted_3scale_deploy | default(false) | bool
