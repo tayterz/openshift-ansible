@@ -1185,7 +1185,7 @@ parameters:
 - name: TENANT_NAME
   description: "Tenant name under the root that Admin UI will be available with -admin suffix."
   required: true
-  value: "3scale"
+  value: "{{openshift_3scale_project}}"
 - name: MYSQL_USER
   displayName: MySQL User
   description: Username for MySQL user that will be used for accessing the database.
