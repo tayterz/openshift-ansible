@@ -1,0 +1,4 @@
+---
+- name: Check that wildcard domain variable is set
+  fail: msg='the openshift_3scale_wildcard_domain variable is required'
+  when: openshift_3scale_wildcard_domain is not defined
