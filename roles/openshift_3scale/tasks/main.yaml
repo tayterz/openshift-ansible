@@ -33,7 +33,9 @@
   check_mode: no
   tags: 3scale_init
 
-- include: "{{ (openshift_hosted_3scale_deploy | bool) | ternary('install_3scale.yaml') }}"
+- include: 'install_3scale.yaml'
+  when: "{{ openshift_hosted_3scale_deploy | bool }}"
+
 
 - name: Delete temp directory
   local_action: file path=local_tmp.stdout state=absent
