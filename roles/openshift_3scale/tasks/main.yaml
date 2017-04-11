@@ -19,7 +19,7 @@
 - name: Create temp directory for all our templates
   file: path={{mktemp.stdout}}/templates state=directory mode=0755
   changed_when: False
-  when: "{{ openshift_3scale_install_3scale | bool }}"
+  when: "{{ openshift_hosted_3scale_deploy | bool }}"
 
 - name: Create temp directory local on control node
   local_action: command mktemp -d
@@ -33,7 +33,7 @@
   check_mode: no
   tags: 3scale_init
 
-- include: "{{ (openshift_3scale_install_3scale | bool) | ternary('install_3scale.yaml') }}"
+- include: "{{ (openshift_hosted_3scale_deploy | bool) | ternary('install_3scale.yaml') }}"
 
 - name: Delete temp directory
   local_action: file path=local_tmp.stdout state=absent
